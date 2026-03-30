@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Budget Module</title>
+  <link rel="stylesheet" href="http://localhost/expenses_management/css/budget.css" />
+</head>
+<body>
+  
+<!-- 🔙 Back Arrow Button -->
+<a href="dashboard.html" class="back-button" title="Go back">←</a>
+
+<!-- ✅ Budget Form -->
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+  <div style="width: 90%; max-width: 400px; padding: 30px; border: 1px solid #ccc; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); background-color: #f9f9f9;">
+    <h2 style="text-align: center; margin-bottom: 30px;">Budget</h2>
+
+    <form id="budgetForm">
+      <label for="category">Category</label>
+      <select id="category" required>
+        <option value="" disabled selected>Select Category</option>
+        <option value="groceries">Groceries</option>
+        <option value="utilities">Utilities</option>
+        <option value="loan">Loan</option>
+        <option value="repairs">Repairs</option>
+        <option value="transport">Transport</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="healthcare">Healthcare</option>
+        <option value="education">Education</option>
+        <option value="shopping">Shopping</option>
+        <option value="others">Others</option>
+      </select>
+
+      <label for="period">Budget Period</label>
+      <select id="period" required>
+        <option value="" disabled selected>Select Period</option>
+        <option value="weekly">Weekly</option>
+        <option value="monthly">Monthly</option>
+      </select>
+
+      <label for="from-date">Date Range</label>
+      <div style="display: flex; gap: 10px;">
+        <input type="date" id="startDate" required />
+        <span style="align-self: center;">to</span>
+        <input type="date" id="endDate" required />
+      </div>
+
+      <label for="amount">Amount</label>
+      <input type="number" id="amount" placeholder="Enter amount" min="0" required />
+
+      <button type="submit">Add Budget</button>
+    </form>
+  </div>
+</div>
+
+<!-- ✅ Toast Notification -->
+<div id="toast" class="toast hidden"></div>
+
+<!-- ✅ JS: Enforce endDate after startDate -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const start = document.getElementById("startDate");
+    const end = document.getElementById("endDate");
+
+    start.addEventListener("change", () => {
+      end.min = start.value;
+      if (end.value && end.value < start.value) {
+        end.value = start.value;
+      }
+    });
+  });
+</script>
+
+<!-- ✅ Load External JS -->
+<script src="http://localhost/expenses_management/js/budget.js"></script>
+
+</body>
+</html>

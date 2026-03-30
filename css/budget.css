@@ -1,0 +1,158 @@
+
+body {
+  background-color: darkslategrey;
+  font-family: "Segoe UI", sans-serif;
+  color: #222; /* Dark text for headings & labels */
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Heading in dark color */
+h2 {
+  color: #222;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.notification-bell {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  color: #fff;
+  background-color:darkslategray;
+  padding: 10px 14px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 999;
+}
+
+.notification-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+
+/* Labels in dark */
+label {
+  color: #222;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Inputs and selects */
+input,
+select {
+  background-color: white;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+/* Button with better contrast */
+button {
+  background-color: darkslategray !important;
+  color: beige !important;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+button:hover {
+  background-color: #2f4f4f;
+}
+
+/* Notification bell container */
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+
+.hidden {
+  display: none;
+}
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #323232;
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  font-size: 16px;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast.hidden {
+  display: none;
+}
+
+
+.toast-message {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 9999;
+}
+
+.toast-message.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px);
+}
+
+/* ✅ Back Button (← top-left corner) */
+.back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 38px;
+  text-decoration: none;
+  color:bisque;
+  background-color: transparent;
+  z-index: 9999;
+  font-weight: bold;
+}
+
+.back-button:hover {
+  color:bisque;
+}
+
+

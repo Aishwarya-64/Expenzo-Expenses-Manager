@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Profile</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: darkslategray;    
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    label {
+      font-size: 14px;
+      display: block;
+      margin-bottom: 6px;
+      margin-top: 16px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      background-color: #f9f9f9;
+    }
+
+    input[readonly] {
+      background-color: #eee;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .save-btn {
+      background-color: #00b894;
+      color: white;
+    }
+
+    .save-btn:hover {
+      background-color: #019875;
+    }
+
+    .logout-btn {
+      background-color: #d63031;
+      color: white;
+      margin-top: 30px;
+    }
+
+    .logout-btn:hover {
+      background-color: #c0392b;
+    }
+
+    .section-title {
+      margin-top: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+  
+
+  <div class="container">
+    <h2>👤 My Profile</h2>
+
+    <!-- User Info -->
+    <div class="section-title">User Info</div>
+
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" readonly />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" readonly />
+
+    <!-- Change Password -->
+    <div class="section-title">Change Password</div>
+
+    <label for="currentPassword">Current Password</label>
+    <input type="password" id="currentPassword" name="currentPassword" placeholder="Current Password" />
+
+    <label for="newPassword">New Password</label>
+    <input type="password" id="newPassword" name="newPassword" placeholder="New Password" />
+
+    <label for="confirmPassword">Confirm Password</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" />
+
+    <button class="save-btn" id="updatePasswordBtn">Update Password</button>
+
+    <!-- Logout -->
+    <button class="logout-btn" id="logoutBtn">Logout</button>
+  </div>
+
+  <script src="../js/profile.js"></script>
+
+
+</body>
+</html>

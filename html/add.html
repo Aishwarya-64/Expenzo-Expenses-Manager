@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Transaction</title>
+  <link rel="stylesheet" href="http://localhost/expenses_management/css/add.css"/>
+  <style>
+    /* Optional quick fix in case modal doesn't show */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .modal button {
+      margin-top: 15px;
+      padding: 8px 16px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .selected {
+      background-color: #e0e0e0; /* Just for visual feedback */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="cancel-btn">Back</div>
+    <h2>Add</h2>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab active">Expenses</div>
+    <div class="tab" id="incomeTab">Income</div>
+  </div>
+
+  <!-- Expense Categories -->
+  <div class="expense-list" id="expenseList">
+    <div class="category"><div class="icon-btn">🛍️</div><span>Shopping</span></div>
+    <div class="category"><div class="icon-btn">🍔</div><span>Food</span></div>
+    <div class="category"><div class="icon-btn">🎬</div><span>Entertainment</span></div>
+    <div class="category"><div class="icon-btn">📚</div><span>Education</span></div>
+    <div class="category"><div class="icon-btn">🚗</div><span>Transportation</span></div>
+    <div class="category"><div class="icon-btn">🏥</div><span>Health</span></div>
+    <div class="category"><div class="icon-btn">✈️</div><span>Travel</span></div>
+    <div class="category"><div class="icon-btn">⚽</div><span>Sports</span></div>
+    <div class="category"><div class="icon-btn">🏡</div><span>Housing</span></div>
+    <div class="category"><div class="icon-btn">❤️</div><span>Donations</span></div>
+    <div class="category"><div class="icon-btn">🛒</div><span>Groceries</span></div>
+    <div class="category"><div class="icon-btn">💡</div><span>Utilities</span></div>
+    <div class="category"><div class="icon-btn">🏦</div><span>Loan</span></div>
+    <div class="category"><div class="icon-btn">🔧</div><span>Repairs</span></div>
+    <div class="category"><div class="icon-btn">❓</div><span>Others</span></div>
+  </div>
+
+  <!-- Amount Entry -->
+  <div class="amount-entry hidden">
+    <h2>Enter Amount</h2>
+    <input type="number" id="amountInput" placeholder="0.00" />
+    <button id="saveBtn">Save</button>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal">
+      <h3>Expenses Saved!</h3>
+      <button id="okBtn">OK</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Back button
+    document.querySelector(".cancel-btn").addEventListener("click", function () {
+      window.location.href = "http://localhost/expenses_management/templates/dashboard.html";
+    });
+
+    // Income tab
+    document.getElementById("incomeTab").addEventListener("click", function () {
+      window.location.href = "Income.html";
+    });
+
+    // Category selection
+    const categories = document.querySelectorAll(".category");
+    const amountEntry = document.querySelector(".amount-entry");
+    const amountInput = document.getElementById("amountInput");
+    const saveBtn = document.getElementById("saveBtn");
+
+    categories.forEach(category => {
+      category.addEventListener("click", function () {
+        categories.forEach(cat => cat.classList.remove("selected"));
+        this.classList.add("selected");
+        amountEntry.classList.remove("hidden");
+        amountInput.focus();
+      });
+    });
+
+    // Save transaction
+    saveBtn.addEventListener("click", async function () {
+      const amount = amountInput.value.trim();
+      const selectedCategory = document.querySelector(".category.selected span")?.textContent;
+
+      if (!selectedCategory) {
+        alert("Please select a category!");
+        return;
+      }
+
+      if (amount === "" || isNaN(amount) || amount <= 0) {
+        alert("Please enter a valid amount!");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("category", selectedCategory);
+      formData.append("amount", amount);
+
+      try {
+        const response = await fetch("http://localhost/expenses_management/php/add.php", {
+          method: "POST",
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.status === "success") {
+          amountInput.value = "";
+          amountEntry.classList.add("hidden");
+          document.getElementById("successModal").style.display = "flex";
+        } else {
+          alert(result.message);
+        }
+      } catch (error) {
+        alert("Something went wrong. Please try again.");
+        console.error(error);
+      }
+    });
+
+    // Modal OK button
+document.getElementById("okBtn").addEventListener("click", function () {
+  document.getElementById("successModal").style.display = "none";
+  // window.location.href = "http://localhost/expenses_management/templates/dashboard.html"; // removed redirection
+});
+
+  </script>
+
+</body>
+</html>

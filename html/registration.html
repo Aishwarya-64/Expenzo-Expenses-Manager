@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="http://localhost/expenses_management/css/registration.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Register</h2>
+
+        <!-- Form starts -->
+         <form id="register-form" action="http://localhost/expenses_management/php/registration.php" method="POST">
+
+
+            <!-- Username -->
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" required><br><br>
+
+            <!-- Email -->
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <!-- Password -->
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <!-- Confirm Password -->
+            <label for="confirm_password">Confirm Password:</label><br>
+            <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+
+            <!-- Submit -->
+            <button type="submit">REGISTER</button>
+        </form>
+       
+      <!-- Popup Modal -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <p id="popup-message"></p>
+    <button id="popup-ok">OK</button> <!-- ✅ ID fixed -->
+  </div>
+</div>
+
+  
+  <!-- Registration Form Container -->
+  <div class="register-form">
+    <!-- Your form inputs go here -->
+  
+    <!-- Fixed login link (moved inside form container) -->
+    <p class="login-link">
+      Already have an account?
+      <a href="http://localhost/expenses_management/templates/login.html">Login</a>
+    </p>
+  </div>
+  
+  <script src="http://localhost/expenses_management/js/registration.js"></script>
+  </body>
+  </html>
+  

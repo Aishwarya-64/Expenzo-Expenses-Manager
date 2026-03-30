@@ -1,0 +1,246 @@
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Full Page Layout */
+body {
+  background-color: darkslategray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  padding-top: 20px;
+}
+
+/* Header Section */
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 10px 20px;
+}
+
+/* Cancel Button (Top-Left Corner) */
+.cancel-btn {
+  position: absolute;
+  left: 20px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: bisque;
+  font-weight: bold;
+}
+
+/* Title ("Add" in the center) */
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: bisque;
+}
+
+/* Expenses & Income - Two Columns */
+.options {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+button {
+  width: 120px;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
+
+
+.tab {
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent; /* Normal */
+}
+
+.tab.active {
+  font-weight: bold;
+  color:bisque; /* Highlight Expenses */
+  border-bottom: 3px solid #a4a09f; /* Underline active tab */
+}
+
+/* Category Grid */
+.expense-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 items per row */
+  gap: 20px;
+  margin-top: 30px;
+  justify-items: center; /* Aligns items to center */
+  color: bisque;
+}
+
+/* Small Rounded Icons */
+.icon-btn {
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: transparent; /* No background */
+}
+
+/* Category Styling */
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  transition: transform 0.3s;
+  
+}
+.category:hover{
+  transform: scale(1.1);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 0.3s;
+  .expense-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Keep everything aligned */
+    gap: 8px; /* Reduce spacing between categories */
+    padding: 10px;
+}
+.category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px; /* Reduce padding */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    width: 80px; /* Keep all categories uniform */
+}
+.category .icon-btn {
+    font-size: 1.8em; /* Slightly smaller icon */
+    padding: 5px;
+}
+
+}
+
+.category.selected {
+  background: #6a763c; /* Highlight color */
+  color: white;
+  font-weight: bold;
+  .category.selected {
+    background-color: rgba(0, 123, 255, 0.1); /* Light blue background */
+    border: 1px solid #007bff; /* Very thin border */
+    border-radius: 6px; /* Slightly rounded */
+    box-shadow: 0 0 3px rgba(0, 123, 255, 0.2); /* Smaller glow */
+    padding: 4px; /* Reduce effect size */
+}
+
+    
+}
+
+
+
+.amount-box {
+  position: fixed;
+  top: 80%; /* Pushes it slightly lower than center */
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  padding: 20px;
+  background: #171616;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  width: 300px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  z-index: 1000; /* Ensure it appears above other elements */
+}
+
+
+.amount-entry h2{
+  font-size: 19px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+
+#amountInput {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.2em;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+
+#saveBtn {
+  padding: 10px 20px;
+  background: #aeb039;
+  color: white;
+  width: 100%;
+  font-size: 1.1em;
+
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#saveBtn:hover {
+  background: #7e8c37;
+}
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  font-size: 1em;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.hidden{
+  display: none;
+}
+

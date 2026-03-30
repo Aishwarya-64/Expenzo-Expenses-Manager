@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenses Management System</title>
+    <link rel="stylesheet" href="http://localhost/expenses_management/css/dashboard.css">
+    
+      
+    
+    
+
+</head>
+<body>
+
+    <body>
+        <div class="app-container">
+            <section class="home-container">
+                <!-- First Row: Reports & Profile -->
+                <div class="modules-row">
+                    <div class="module report-module">
+                        <div class="icon">📊</div>
+                        <p>Reports</p>
+                    </div>
+    
+                    <div class="module profile-module">
+                        <div class="icon">👤</div>
+                        <p>Profile</p>
+                    </div>
+                </div>
+    
+                <!-- Second Row: Budget, Plus (Centered), Transaction -->
+                <div class="modules-row">
+                    <div class="module budget-module">
+                        <div class="icon">💰</div>
+                        <p>Budget</p>
+                    </div>
+    
+                    <div class="module plus-icon">
+                        <div class="icon">+</div>
+                    </div> 
+    
+                </div>
+            </section>
+        </div>
+    
+        <script>
+            
+    document.addEventListener("DOMContentLoaded", function () {
+        // Redirect Reports module
+        document.querySelector(".report-module").addEventListener("click", function () {
+            window.location.href = "report.html";
+        });
+
+        // Redirect Profile module 
+        document.querySelector(".profile-module").addEventListener("click", function () {
+            window.location.href = "profile.html";
+        });
+
+        // Redirect Plus icon to add.html
+        document.querySelector(".plus-icon").addEventListener("click", function () {
+            window.location.href = "add.html";
+        });
+
+         // Redirect Budget module
+         document.querySelector(".budget-module").addEventListener("click", function () {
+        window.location.href = "Budget.html";
+    });
+});
+</script>
+
+        </script>
+    </body>
+    </html>
+    

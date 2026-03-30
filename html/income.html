@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Income</title>
+  <link rel="stylesheet" href="http://localhost/expenses_management/css/income.css">
+</head>
+<body>
+
+  <!-- Header Section -->
+  <div class="header">
+    <button class="cancel-btn">Cancel</button>
+    <h2>Add Income</h2>
+  </div>
+
+  <!-- Income Categories -->
+  <div class="category-list">
+    <div class="category"><div class="icon-btn">💼</div><span>Salary</span></div>
+    <div class="category"><div class="icon-btn">📈</div><span>Investments</span></div>
+    <div class="category"><div class="icon-btn">🕒</div><span>Part-Time</span></div>
+    <div class="category"><div class="icon-btn">🎉</div><span>Bonus</span></div>
+    <div class="category"><div class="icon-btn">❓</div><span>Others</span></div>
+  </div>
+
+  <!-- Amount Entry Box -->
+  <div id="amountBox" class="amount-box">
+    <h3 id="selectedCategoryTitle">Enter Amount</h3>
+    <input type="number" id="amountInput" placeholder="0.00">
+    <button id="saveAmount">Save</button>
+  </div>
+
+  <!-- Success Modal -->
+  <div id="successModal" class="modal">
+    <div class="modal-content">
+      <p>Income Saved Successfully!</p>
+      <button onclick="redirectToDashboard()">OK</button>
+    </div>
+  </div>
+
+  <!-- Cancel Button Logic -->
+  <script>
+    document.querySelector(".cancel-btn").addEventListener("click", function () {
+      window.location.href = "dashboard.html";
+    });
+
+    function redirectToDashboard() {
+      document.getElementById("successModal").style.display = "none";
+      // You can redirect or stay on the page based on your flow
+    }
+  </script>
+
+  <!-- Link to external JS -->
+  <script src="http://localhost/expenses_management/js/income.js"></script>
+
+</body>
+</html>
